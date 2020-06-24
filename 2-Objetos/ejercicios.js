@@ -13,6 +13,29 @@ myPenguin.graznar = function graznar () {
     return 'Kaww kaww!'
 }
 
-console.log(myPenguin)
-
 myPenguin.graznar()
+
+myPenguin.saludar = function () {
+    console.log(`Hola, soy un pingüino y mi nombre es ${this.character}`)
+}
+
+myPenguin.saludar()
+
+myPenguin.character = "Señor Pingu"
+
+myPenguin.saludar()
+
+myPenguin.volar = () => {
+    if (myPenguin.puedeVolar) {
+        console.log(`¡Puedo volar!`)
+    } else {
+        console.log("No Puedo volar :(")
+    }
+}
+
+myPenguin.volar()
+
+myPenguin.puedeVolar = true
+
+myPenguin.volar()
+
