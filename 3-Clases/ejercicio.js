@@ -43,13 +43,6 @@ class Persona {
     }
 }
 
-const daniel = new Persona ("Daniel Antonio Vargas Rosales", "19/10/1997" , 'masculino', 1.75);
-
-console.log("RFC: " + daniel.rfc);
-console.log("IMC: " + daniel.calcularIMC(68).toFixed(1));
-console.log("Es mayor de edad: " + daniel.esMayorDeEdad());
-
-
 class Cuenta {
     constructor(titular,cantidad) {
         this.titular    = titular;
@@ -92,32 +85,38 @@ class Cuenta {
         switch (this.estado) {
             case true:     
                 if ( this.cantidad - monto < 10) {
-                    console.log("Error: monto minimo no alcanzado.\nDebes ingresar menos dinero");
+                    console.log("Error: monto minimo no alcanzado.\nDebes retirar menos dinero");
                     return 1
                 }
                 
                 this.cantidad -= monto
+                console.log("Retiro exitoso\nSaldo actual: " + this.cantidad);
                 break;
         
             default:
-                if ( this.cantidad > 900) {
-                    console.log("Error: monto máximo excedido.\nDebes retirar dinero");
-                } else if ( this.cantidad + monto > 900) {
-                    console.log("Error: monto máximo excedido.\nDebes ingresar menos dinero");
-                } else if ( this.cantidad + monto < 10 ) {
-                    console.log("Error: monto minimo no alcanzado.\nprueba ingresando una cantidad mayor")
-                    this.cantidad += monto
+                if ( this.cantidad - monto > 900) {
+                    console.log("Error: monto máximo excedido.\nDebes retirar más dinero");
+                    return 1;
+                } else if ( this.cantidad < 10) {
+                    console.log("Error: monto minimo no alcanzado.\nNo puedes retirar dinero");
+                    return 1;
+                } else if ( this.cantidad - monto < 10 ) {
+                    console.log("Error: monto minimo no alcanzado.\nprueba retirando una cantidad menor");
+                    return 1;
                 }
+                this.cantidad += monto
+                console.log("Retiro exitoso\nSaldo actual: " + this.cantidad);
                 break;
         }
+        return 0
     }
 
     evaluarCuenta() {
-        if (this.cantidad < 900 ) {
+        if (this.cantidad > 900 ) {
             //cuenta desactivada
             console.log("Error: monto máximo excedido.\nCuenta DESACTIVADA")
             return false
-        } else if (this.cantidad > 10) {
+        } else if (this.cantidad < 10) {
             console.log("Error: monto minimo incompleto.\nCuenta DESACTIVADA")
             return false
         } 
@@ -125,3 +124,22 @@ class Cuenta {
         return true
     }
 }
+//Objetos son creados
+
+    //Este objeto requiere que la fecha se introduzca con "/" que dividan dd/mm/yy
+    //Tampoco debe terminar el nombre con un " " (espacio) y la estatura está en metros  
+const daniel = new Persona ("Daniel Antonio Vargas Rosales", "19/10/1997" , 'masculino', 1.75);
+
+const cuentaDaniel = new Cuenta ("Daniel", 500)
+
+//Llamadas verifican los datos
+console.log("RFC: " + daniel.rfc);
+console.log("IMC: " + daniel.calcularIMC(68).toFixed(1));
+console.log("Es mayor de edad: " + daniel.esMayorDeEdad());
+
+console.log("\n--------------------------------------------------------\n")
+
+
+console.log(cuentaDaniel)
+cuentaDaniel.ingresarCantidad(200)
+cuentaDaniel.retirarCantidad(100)
