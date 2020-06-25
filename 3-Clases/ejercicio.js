@@ -74,11 +74,12 @@ class Cuenta {
                     return 1;
                 }
                 
-                this.cantidad += monto
+                this.cantidad += monto;
+                this.estado = true;
                 console.log("Ingreso exitoso\nSaldo actual: " + this.cantidad);
                 break;
         }
-        return 0
+        return 0;
     }
 
     retirarCantidad(monto) {
@@ -86,7 +87,7 @@ class Cuenta {
             case true:     
                 if ( this.cantidad - monto < 10) {
                     console.log("Error: monto minimo no alcanzado.\nDebes retirar menos dinero");
-                    return 1
+                    return 1;
                 }
                 
                 this.cantidad -= monto
@@ -104,11 +105,12 @@ class Cuenta {
                     console.log("Error: monto minimo no alcanzado.\nprueba retirando una cantidad menor");
                     return 1;
                 }
-                this.cantidad += monto
+                this.cantidad += monto;
+                this.estado = true;
                 console.log("Retiro exitoso\nSaldo actual: " + this.cantidad);
                 break;
         }
-        return 0
+        return 0;
     }
 
     evaluarCuenta() {
@@ -133,7 +135,7 @@ const daniel = new Persona ("Daniel Antonio Vargas Rosales", "19/10/1997" , 'mas
 const cuentaDaniel = new Cuenta ("Daniel", 500)
 
 //Llamadas verifican los datos
-console.log("RFC: " + daniel.rfc);
+console.log("\n\nRFC: " + daniel.rfc);
 console.log("IMC: " + daniel.calcularIMC(68).toFixed(1));
 console.log("Es mayor de edad: " + daniel.esMayorDeEdad());
 
