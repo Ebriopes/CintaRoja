@@ -58,15 +58,58 @@ class Cuenta {
     }
 
     ingresarCantidad(monto) {
-        if ( this.cantidad + monto > 900) {
-            console.log("Error: monto máximo excedido.\nDebes ingresar menos dinero")
-        } else if (this.cantidad + monto < 10) {
-            console.log("Error:")
+        switch (this.estado) {
+            case true:     
+                if ( this.cantidad + monto > 900) {
+                    console.log("Error: monto máximo excedido.\nDebes ingresar menos dinero");
+                    return 1;
+                }
+                
+                this.cantidad += monto;
+                console.log("Ingreso exitoso\nSaldo actual: " + this.cantidad);
+                break;
+        
+            default:
+                if ( this.cantidad > 900) {
+                    console.log("Error: monto máximo excedido.\nDebes retirar dinero");
+                    return 1;
+                } else if ( this.cantidad + monto > 900) {
+                    console.log("Error: monto máximo excedido.\nDebes ingresar menos dinero");
+                    return 1;
+                } else if ( this.cantidad + monto < 10 ) {
+                    console.log("Error: monto minimo no alcanzado.\nprueba ingresando una cantidad mayor");
+                    return 1;
+                }
+                
+                this.cantidad += monto
+                console.log("Ingreso exitoso\nSaldo actual: " + this.cantidad);
+                break;
         }
+        return 0
     }
 
     retirarCantidad(monto) {
-        this.cantidad -= monto
+        switch (this.estado) {
+            case true:     
+                if ( this.cantidad - monto < 10) {
+                    console.log("Error: monto minimo no alcanzado.\nDebes ingresar menos dinero");
+                    return 1
+                }
+                
+                this.cantidad -= monto
+                break;
+        
+            default:
+                if ( this.cantidad > 900) {
+                    console.log("Error: monto máximo excedido.\nDebes retirar dinero");
+                } else if ( this.cantidad + monto > 900) {
+                    console.log("Error: monto máximo excedido.\nDebes ingresar menos dinero");
+                } else if ( this.cantidad + monto < 10 ) {
+                    console.log("Error: monto minimo no alcanzado.\nprueba ingresando una cantidad mayor")
+                    this.cantidad += monto
+                }
+                break;
+        }
     }
 
     evaluarCuenta() {
