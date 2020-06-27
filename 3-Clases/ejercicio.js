@@ -143,5 +143,6 @@ console.log("\n--------------------------------------------------------\n")
 
 
 console.log(cuentaDaniel)
-cuentaDaniel.ingresarCantidad(200)
+cuentaDaniel.ingresarCantidad(500)
 cuentaDaniel.retirarCantidad(100)
+console.log(cuentaDaniel)
