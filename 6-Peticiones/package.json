@@ -1,0 +1,17 @@
+{
+  "name": "peteciones",
+  "version": "1.0.0",
+  "description": "Petciones Devf",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js",
+    "pokemon": "node pokemon.js",
+    "asteroid": "node asteroid.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ebriopes",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}
