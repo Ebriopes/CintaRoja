@@ -1,0 +1,15 @@
+{
+  "name": "promesa",
+  "version": "1.0.0",
+  "description": "Promesa ejercicios",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "Ebriopes",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "package.json": "^2.0.1"
+  }
+}
