@@ -18,14 +18,19 @@ request("https://pokeapi.co/api/v2/generation/1/",(error,response,body) => {
     const species = JSON.parse(body).pokemon_species;
     const max = species.length
     const arreglo = []
-    
-    //for (const i of Object.values (species)) {
-    //    const obj = {
-    //        name: i.name,
-    //        moves: [],
-    //        types: [],
-    //    }
-    //    request("https://pokeapi.co/api/v2/pokemon/" + obj.name, )
-    //    console.log(obj)
-    //}
+    let k=0
+
+    request(`https://pokeapi.co/api/v2/pokemon/${species[k].name}`, recursiva = () => {
+
+        //for (const i of Object.values (species)) {
+            //    const obj = {
+                //        name: i.name,
+                //        moves: [],
+                //        types: [],
+                //    }
+                //    request("https://pokeapi.co/api/v2/pokemon/" + obj.name, )
+                //    console.log(obj)
+                //}
+        }
+    );
 });
