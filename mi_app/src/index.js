@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import CardManager from './componentes/CardManager/CardManager';
 import * as serviceWorker from './serviceWorker';
+import 'bootstrap/dist/css/bootstrap.css'
 
 ReactDOM.render(
   <React.StrictMode>

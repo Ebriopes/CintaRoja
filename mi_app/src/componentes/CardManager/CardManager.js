@@ -5,15 +5,15 @@ import './CardManager.css'
 
 const CardManager = () => {
     const [data,setData] = useState([]);
-    const [palabra, setPalabra] =useState('');
+    const [palabra, setPalabra] = useState('');
     const Api_key = "9CmaT75HBcgkxcpoM0xfoKZAJsrX1s5X"
-    const getGifs = () =>{
+    const cards = data.map(item => <Card src={item.images.downsized_large.url} key={item.id}alt={item.title}></Card>);
+    useEffect(() => {
         axios.get(`https://api.giphy.com/v1/gifs/search?api_key=${Api_key}&q=${palabra}&limit=4`)
-        .then(({data,status})=>
-            setData(data.data)
-        )
+        .then(({data})=>setData(data.data))
     }
-    useEffect(()=> getGifs, [palabra])
+    , [palabra])
+
     return (
         <>
             <label>Buscanding</label>
@@ -24,9 +24,8 @@ const CardManager = () => {
                     setPalabra(event.target.value)
                 }/>
             {palabra}
-            {console.log(data)}
-            <div className="card-manager">
-                {data.map(item => <Card src={item.images.downsized_large.url}></Card>)}
+            <div className="card-manager container row">
+                {cards}
             </div>
         </>
     );
