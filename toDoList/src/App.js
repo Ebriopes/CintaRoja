@@ -1,26 +1,32 @@
 import React from 'react';
-//import logo from './logo.svg';
-import './App.css';
+import Home from './View/Home'
+import Task from './View/Task'
+import AddTask from './View/AddTask'
+import P404 from './View/P404'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom'
 
-function App({children}) {
+function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        {/*<img src={logo} className="App-logo" alt="logo" />*/}
-        {children}
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home/>
+        </Route>
+        <Route exact path="/Task">
+          <Task></Task>
+        </Route>
+        <Route exact path="/addTask">
+          <AddTask></AddTask>
+        </Route>
+        <Route exact path="*">
+          <P404></P404>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
