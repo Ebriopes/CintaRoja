@@ -1,10 +1,10 @@
 import React from 'react';
-import './Recuadro.css';
+import './ToDoList.css';
 
-function Recuadro({logo}){
-    return ( 
+function Base({children}) {
+    return (
         <div className="Cuadro">
-            <img className="RecuadroLogo" src={logo} />
+            {children}
             <p>Esta es la prueba</p>
         </div>
     )
@@ -28,7 +28,7 @@ class ItemFrame extends Component {
 }
 Vaaaa. Normalmente los componentes se ponen con mayúsucla
 
-Y si nos ponemos mamones, el archivo se debe llamar igual. Recuadro.jsAh va
+Y si nos ponemos mamones, el archivo se debe llamar igual. Base.jsAh va
 */
 
-export default Recuadro;
+export default Base;
